@@ -58,5 +58,5 @@ export const readJsonFromFile = async <T>(
   }
 
   const parsedData = JSON.parse(result.value);
-  return JSON.parse(parsedData);
+  return parsedData;
 };

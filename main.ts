@@ -4,6 +4,7 @@ import { GlobalStore } from "./store/global-store.ts";
 import { authMenu } from "./ui/auth-menu/auth-menu.ts";
 import { AuthMenuChoice } from "./ui/auth-menu/types.ts";
 import { getUserCredentials } from "./ui/general/user-credentials.ts";
+import { mainMenu } from "./ui/main-menu/main-menu.ts";
 import { exit } from "./utils/lifecycle.ts";
 import { asyncRetry } from "./utils/retry.ts";
 import { clearOutput, print } from "./utils/ui.ts";
@@ -67,5 +68,8 @@ const handleAuthMenuDecision = async (decision: AuthMenuChoice) => {
 const authMenuDecision = await authMenu();
 
 await handleAuthMenuDecision(authMenuDecision);
+clearOutput();
+const mainMenuDecision = await mainMenu();
 
-exit();
+console.log(mainMenuDecision);
+exit({ shouldClear: false });
